@@ -1,0 +1,25 @@
+#include "shell.h"
+
+int operator_times(int oper)
+{
+	int res = 0;
+	char *op = NULL;
+	
+	if (oper == 2)
+		op = "&&";
+	if (oper == 1)
+		op = "|";
+	if (oper == 4)
+		op = "||";
+	if (oper == 6)
+		op = ">>";
+	if (oper == 3)
+		op = ">";
+	if (oper == 8)
+		op = "<<";
+	if (oper == 5)
+		op = "<";
+	if (oper == 7)
+		op = ";";
+	for i 
+}
