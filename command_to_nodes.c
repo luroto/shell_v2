@@ -10,7 +10,10 @@ argument_t *command_to_nodes(argument_t **head, char *buffer, int oper, int num)
 	{
 		if (is_opera(buffer[i]) == 1)
 		{
-			k = i -1;
+			if (buffer[i - 1] == ' ')
+				k = i - 1;
+			else
+				k = i;
 			command = _strndup(buffer + j , k);
 			add_command(head, command, num);
 			free(command);
