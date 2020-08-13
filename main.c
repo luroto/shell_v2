@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		if (oper ==  0)
 			_strtok_execv(buffer, argv[0], num);
 		else
-			multiple_processes(buffer, oper, num);
+			multiple_processes(buffer, num);
 	}
 	free(buffer);
 	return (0);

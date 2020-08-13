@@ -1,5 +1,10 @@
 #include "shell.h"
-void multiple_processes(char *buffer, int oper, int num)
+/**
+ * multiple_processes - handles redirections and pipelines
+ * @buffer: The entire line from getline
+ * @num: number of times the process has been executed
+ */
+void multiple_processes(char *buffer, int num)
 {
 	argument_t *head = NULL;
 	pid_t pid;
@@ -8,18 +13,21 @@ void multiple_processes(char *buffer, int oper, int num)
 	pid = fork();
 	if (pid == 0)
 	{
-		command_to_nodes(&head, buffer, oper, num);
-		//printing_commands(head);
-		i = printing_commands(head);
+		command_to_nodes(&head, buffer, num);
+		i = arguments_count(head);
 		printf("This is the size: %d\n", i);
+		printing_commands(head);
 		free_arguments(&head);
-		i = printing_commands(head);
-		printf("\n\nVeamos si todo quedó en orden: This is the size: %d\n", i);
+		i = arguments_count(head);
+		printf("\n\nVeamos si todo quedó en orden:size: %d\n", i);
 		free(buffer);
-		exit (EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 	}
 	if (pid > 0)
+		wait(NULL);
 	if (pid == -1)
-	{perror("Error");
-		exit(0);}
+	{
+		perror("Error");
+		exit(0);
+	}
 }
