@@ -1,19 +1,15 @@
 #include "shell.h"
-int printing_commands(argument_t *head)
+/**
+ * printing_commands - Function to print the doubly linked list of commands
+ * @head: Pointer to the first node
+ * Return: It's a void function
+ */
+void printing_commands(argument_t *head)
 {
-	int size = 0;
-
-	if (head == NULL)
+	while (head != NULL)
 	{
-		printf("It's NULL\n");
-		return (size);
-	}
-
-	while(head != NULL)
-	{
-		printf("Type: %d, command: %s\n", head->tipo, head->com);
-		size++;
+		printf("Type: %d, command: %s\n",
+			head->tipo, head->com);
 		head = head->next;
 	}
-	return (size);
 }

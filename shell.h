@@ -11,10 +11,10 @@
 #include <stddef.h>
 extern char **environ;
 /**
- *argument_s - Doubly linked list for storing commands
+ *struct argument_s - Doubly linked list for storing commands
  *@tipo: type of argument
  *@com: command from getline
- *@prev : pointer to the previous node
+ *@prev: pointer to the previous node
  *@next: pointer to the next node
  */
 typedef struct argument_s
@@ -37,13 +37,13 @@ void _error(char *name, char *comand, int num);
 void free_grid(char **grid, int height);
 int checking_logop(char *buffer);
 argument_t *add_command(argument_t **head, char *comando, int num);
-argument_t *command_to_nodes(argument_t **head, char *buffer, int oper, int num);
-int printing_commands(argument_t *head);
-void multiple_processes(char *buffer, int oper, int num);
+argument_t *command_to_nodes(argument_t **head, char *buffer, int num);
+void printing_commands(argument_t *head);
+void multiple_processes(char *buffer, int num);
 char *_strdup(char *str);
 char *_strncpy(char *dest, char *src, int n);
 char *_strdup(char *str);
-int size_arguments(argument_t *head);
+int arguments_count(argument_t *head);
 char *_strncat(char *dest, char *src, int n);
 char *_strndup(char *str, int cont);
 int is_opera(char c);

@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- *
- *
- *
+ *checking_logop - Checks the type of operator has been sent
+ *@buffer: command to be analyzed
+ *Return: >0 if is an operator, otherwise 0
  */
 int checking_logop(char *buffer)
 {

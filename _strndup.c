@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- **_strdup - copies a string on a newly allocated space
+ **_strndup - copies a string on a newly allocated space
  *
  *@str: source string
- *
+ *@cont: Number of bytes to be copied
  *Return: It returns a pointer to the allocated memory
  */
 char *_strndup(char *str, int cont)
