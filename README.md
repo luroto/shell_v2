@@ -1,6 +1,6 @@
-# simple_shell
+# shell_v2
 ---
-This is the repository for the custom shell we built as the final project for the first trimester at Holberton School.
+This is the repository for a second version of the Shell Holberton School project
 
 ## Description
 This shell is able to get data typed into the standard input, read it, determine if it has a function or not and execute commands if that is the case.
@@ -75,4 +75,5 @@ The set of functions for our shell and other files contained here are the follow
 
 ### Authors
 * [**Carolina Andrade**](https://github.com/xica369)
+* [**Mariana Plazas](https://github.com/marianaplazas)
 * [**Lucía Rodriguez**](https://github.com/luroto)
