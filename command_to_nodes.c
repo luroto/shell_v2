@@ -9,38 +9,27 @@
 argument_t *command_to_nodes(argument_t **head, char *buffer, int num)
 {
 	char *command = NULL;
-	int i, j, k, total, opera;
+	int i, j, k, total;
 
 	total = _strlen_recursion(buffer);
 
 	for (i = 0, j = 0; i < total; i++)
 	{
-		opera = is_opera(buffer[i]);
-		if (opera == 1)
+		if (is_opera(buffer[i]) == 1)
 		{
-			if (buffer[i - 1] == ' ')
-				k = i - j - 1;
-			else
-				k = i - j;
+			k = i - j - (buffer[i - 1] == ' ');
 			command = _strndup(buffer + j, k);
 			add_command(head, command, num);
 			free(command);
-			if (is_opera(buffer[i + 1]) == 1)
-				k = 2;
-			else
-				k = 1;
+			k = is_opera(buffer[i + 1]) + 1;
 			command = _strndup(buffer + i, k);
 			add_command(head, command, num);
 			free(command);
-			if (is_opera(buffer[i + 1]) == 1)
-				i += 2;
-			else
-				i++;
+			i += is_opera(buffer[i + 1]) + 1;
 			while (buffer[i] == ' ')
 				i++;
 			j = i;
 		}
-
 	}
 	k = total - j;
 	command = _strndup(buffer + j, k);

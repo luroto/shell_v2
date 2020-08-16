@@ -34,6 +34,8 @@ int checking_logop(char *buffer)
 		}
 		if (buffer[i] == ';')
 			return (7);
+		if (buffer[i] == '=')
+			return (9);
 	}
 	return (0);
 }

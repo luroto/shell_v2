@@ -24,7 +24,18 @@ typedef struct argument_s
 	struct argument_s *next;
 	struct argument_s *prev;
 } argument_t;
-
+/**
+ *struct history_s - Doubly linked list for storing commands
+ *@num: num in the queue
+ *@com: command from getline
+ *@next: pointer to the next node
+ */
+typedef struct history_s
+{
+	int num;
+	char *com;
+	struct history_s *next;
+} history_t;
 void _strtok_execv(char *buffer, char *name, int num);
 char *_path(char *str);
 char *str_concat(char *s1, char *s2);
@@ -48,5 +59,7 @@ char *_strncat(char *dest, char *src, int n);
 char *_strndup(char *str, int cont);
 int is_opera(char c);
 void free_arguments(argument_t **head);
-
+void printing_history(history_t *head);
+void free_history(history_t **head);
+history_t *add_history(history_t **head, char *comando, int num);
 #endif
