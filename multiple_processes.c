@@ -14,7 +14,6 @@ void multiple_processes(char *buffer, int num)
 	if (pid == 0)
 	{
 		command_to_nodes(&head, buffer, num);
-		printing_commands(head);
 		if (arguments_count(head) == 3)
 			i = executing_redirections_pipelines(head, num);
 		free_arguments(&head);
