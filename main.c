@@ -38,7 +38,6 @@ int main(int argc, char **argv)
 		if (_strcmp(buffer, aux) == 0)
 		{
 			free(buffer);
-			printing_history(hh);
 			free_history(&hh);
 			exit(0);
 		}

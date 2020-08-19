@@ -10,7 +10,6 @@ void free_history(history_t **head)
 
 	while (*head != NULL)
 	{
-		printf("This is the command: %s", (*head)->com);
 		aux = (*head)->next;
 		if ((*head)->com != NULL)
 			free((*head)->com);

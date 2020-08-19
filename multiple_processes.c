@@ -14,14 +14,13 @@ void multiple_processes(char *buffer, int num)
 	if (pid == 0)
 	{
 		command_to_nodes(&head, buffer, num);
-		i = arguments_count(head);
-		printf("This is the size: %d\n", i);
-		printing_commands(head);
+		if (arguments_count(head) == 3)
+			i = executing_redirections_pipelines(head, num);
 		free_arguments(&head);
-		i = arguments_count(head);
-		printf("\n\nVeamos si todo quedó en orden:size: %d\n", i);
 		free(buffer);
-		exit(EXIT_SUCCESS);
+		if (i == 0)
+			exit(EXIT_SUCCESS);
+		exit (EXIT_SUCCESS);
 	}
 	if (pid > 0)
 		wait(NULL);
