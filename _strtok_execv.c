@@ -30,12 +30,13 @@ void _strtok_execv(char *buffer, char *name, int num)
 		aux = _path(temp);
 		if (aux[0] == er[0])
 		{free(aux), _error(name, tok[0], num);
-		free(buffer), free_grid(tok, i), exit(0); }
+		free(buffer), free_grid(tok, i), exit(255); }
 		else
 			tok[0] = aux;
 		ex = execv(tok[0], tok);
 		if (ex == -1)
-		{_error(name, tok[0], num), free_grid(tok, i), exit(0);
+		{_error(name, tok[0], num), free_grid(tok, i),
+			exit(255);
 		}               }
 		if (pid > 0)
 			wait(NULL);

@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <fcntl.h>
+
 extern char **environ;
 /**
  *struct argument_s - Doubly linked list for storing commands
@@ -68,4 +69,6 @@ int to_file(char *com, char *comp, int op, char *f, int num);
 int executing_redirections_pipelines(argument_t *head, int num);
 int checking_newline(char *buffer);
 int to_command(char *com, char *comp, int op, char *f, int num);
+int logical_operators(argument_t *head, int num);
+int _strtok_operators(char *buffer, char *name, int num);
 #endif

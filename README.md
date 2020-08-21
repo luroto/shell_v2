@@ -75,5 +75,5 @@ The set of functions for our shell and other files contained here are the follow
 
 ### Authors
 * [**Carolina Andrade**](https://github.com/xica369)
-* [**Mariana Plazas](https://github.com/marianaplazas)
+* [**Mariana Plazas**](https://github.com/marianaplazas)
 * [**Lucía Rodriguez**](https://github.com/luroto)
