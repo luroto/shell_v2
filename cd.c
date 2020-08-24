@@ -16,29 +16,27 @@ size_t _strlen(const char *s)
 #include "shell.h"
 /**
  * cd_fun - entry current path
- * @largs: the path or options
+ * @args: the path or options
  */
 void cd_fun(char *args)
 {
-	char *string = "home";
 	int file, index;
 
-	if(args == NULL)
+	if (args == NULL)
 	{
 		index = find_path("HOME");
 		chdir((environ[index]) + 5);
 	}
-		
-	if(_strcmp(args,"-") == 0)
+	else if (_strcmp(args, "-") == 0)
 	{
-		puts(args); //chdir to the before path
+		puts(args);
 	}
 
 	else
 	{
 		file = chdir(args);
 		if (file < 0)
-			perror(args);		
+			perror(args);
 	}
 }
 /**

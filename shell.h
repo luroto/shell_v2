@@ -62,4 +62,11 @@ void free_arguments(argument_t **head);
 void printing_history(history_t *head);
 void free_history(history_t **head);
 history_t *add_history(history_t **head, char *comando, int num);
+int checking_builtins(char *buffer, history_t **head);
+char *_strstr(char *haystack, char *needle);
+size_t _strlen(const char *s);
+void cd_fun(char *args);
+int find_path(char *str);
+int *get_argument(char *buffer, char *needle);
+int very_simple_atoi(char *arg);
 #endif

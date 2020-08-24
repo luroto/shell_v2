@@ -19,7 +19,7 @@ nc.
  */
 int main(int argc, char **argv)
 {
-	char *buffer = NULL, *aux = "exit\n";
+	char *buffer = NULL;
 	size_t bufsize = 1;
 	ssize_t checkget = 0;
 	history_t *hh = NULL;
@@ -35,15 +35,9 @@ int main(int argc, char **argv)
 		if (checkget == -1)
 			break;
 		add_history(&hh, buffer, num);
-		if (_strcmp(buffer, aux) == 0)
-		{
-			free(buffer);
-			printing_history(hh);
-			free_history(&hh);
-			exit(0);
-		}
-		if (checking_logop(buffer) == 0)
-			_strtok_execv(buffer, argv[0], num);
+		if (checking_logop(buffer) == 0 &&
+			checking_builtins(buffer, &hh) == 0)
+		_strtok_execv(buffer, argv[0], num);
 		else
 			multiple_processes(buffer, num);
 	}

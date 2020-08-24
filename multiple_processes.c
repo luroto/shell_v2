@@ -8,7 +8,6 @@ void multiple_processes(char *buffer, int num)
 {
 	argument_t *head = NULL;
 	pid_t pid;
-	int i;
 
 	pid = fork();
 	if (pid == 0)

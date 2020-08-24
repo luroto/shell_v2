@@ -26,7 +26,7 @@ char *_strtok(char *str, char *separator, int flag)
 				n = 1; }
 		if (n == 1)
 			break;
-		len++; }
+	len++; }
 	if (len != 0)
 	{tok = malloc(sizeof(char) * (len + 1));
 		for (j = 0; j < (len + 1); j++)
@@ -38,12 +38,12 @@ char *_strtok(char *str, char *separator, int flag)
 		for (j = 0; separator[j]; j++)
 		{
 			if (str[i] == ':' && str[i + 1] == ':'
-			    && separator[j] == ':')
+				&& separator[j] == ':')
 			{ tok[0] = ':';
-				return (tok); }
+			return (tok); }
 			if (str[i] == separator[j])
 			{tok[n] = '\0';
-				return (tok); }
+			return (tok); }
 		}
 		tok[n] = str[i];
 		n++;
