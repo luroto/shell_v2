@@ -6,9 +6,9 @@
 *@needle: The string to be serched as substring
 *Return: A pointer to the beginning of the found string, otherwise NULL
 */
-int _strstr(char *haystack, char *needle)
+char *_strstr(char *haystack, char *needle)
 {
-	int i, j, haystacki, start;
+	int i = 0, j = 0, haystacki = 0, start = 0;
 
 	for (i = 0; haystack[i] != '\0'; i++)
 	{
