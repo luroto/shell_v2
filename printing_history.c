@@ -7,8 +7,8 @@
 void printing_history(history_t *head)
 {
 	while (head != NULL)
-    {
-        printf(" %d %s", head->num, head->com);
-        head = head->next;
-    }
+	{
+		printf(" %d %s", head->num, head->com);
+		head = head->next;
+	}
 }
