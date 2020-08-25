@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	size_t bufsize = 1;
 	ssize_t checkget = 0;
 	history_t *hh = NULL;
-	int num = -1;
+	int num = 0;
 
 	(void)argc;
 	signal(SIGINT, ctrlhandler);
