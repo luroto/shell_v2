@@ -16,7 +16,7 @@ history_t *add_history(history_t **head, char *comando, int num)
 		_error(comando, comando, num);
 		exit(EXIT_FAILURE);
 	}
-	newnode->num = num;
+	newnode->num = num - 1;
 	newnode->next = NULL;
 	newnode->com = _strdup(comando);
 	if  (newnode->com == NULL)
