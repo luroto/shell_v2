@@ -69,4 +69,5 @@ void cd_fun(char *args);
 int find_path(char *str);
 int *get_argument(char *buffer, char *needle);
 int very_simple_atoi(char *arg);
+int executing_redirections_pipelines(argument_t *head, int num);
 #endif

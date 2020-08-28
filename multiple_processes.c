@@ -13,6 +13,7 @@ void multiple_processes(char *buffer, int num)
 	if (pid == 0)
 	{
 		command_to_nodes(&head, buffer, num);
+		executing_redirections_pipelines(head, num);
 		free_arguments(&head);
 		free(buffer);
 		exit(EXIT_SUCCESS);
