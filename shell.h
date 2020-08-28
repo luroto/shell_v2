@@ -74,6 +74,6 @@ int executing_redirections_pipelines(argument_t *head, int num);
 int *first_argument(char *buffer);
 int to_file(char *com, char *comp, int op, char *f, int num);
 int to_command(char *com, char *comp, int op, char *f, int num);
-
+int checking_newline(char *buffer);
 
 #endif
