@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <stddef.h>
+#include <fcntl.h>
 extern char **environ;
 /**
  *struct argument_s - Doubly linked list for storing commands
@@ -70,4 +71,9 @@ int find_path(char *str);
 int *get_argument(char *buffer, char *needle);
 int very_simple_atoi(char *arg);
 int executing_redirections_pipelines(argument_t *head, int num);
+int *first_argument(char *buffer);
+int to_file(char *com, char *comp, int op, char *f, int num);
+int to_command(char *com, char *comp, int op, char *f, int num);
+
+
 #endif
