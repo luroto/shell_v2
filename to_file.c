@@ -26,12 +26,6 @@ int to_file(char *com, char *comp, int op, char *f, char *program, int num)
 		opf = open(f, O_CREAT | O_TRUNC | O_RDWR, 0664);
 	else
 		opf = open(f, O_CREAT | O_APPEND | O_RDWR, 0664);
-	if (errno != 0 && errno == EACCES)
-		access_error(program, f, num);
-	else if (errno != 0 && errno == EISDIR)
-		directory_error(program, f, num);
-	else if (errno != 0)
-		_error(program, com, num);
 	if (opf != -1)
 	{
 		dup2(opf, 1);
