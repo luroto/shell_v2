@@ -26,6 +26,13 @@ int to_command(char *com, char *comp, int op, char *f, char *program, int num)
 		opf = open(f, O_RDONLY);
 	else
 		opf = open(f, O_CREAT | O_APPEND | O_RDWR, 0664);
+	if (opf == -1)
+	{
+		_error(program, com, num);
+		free(path);
+		free_grid(arr, i);
+		return (-1);
+	}
 	dup2(opf, 0);
 	opera = execve(path, arr, environ);
 	close(opf);

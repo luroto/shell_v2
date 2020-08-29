@@ -41,7 +41,6 @@ int executing_redirections_pipelines(argument_t *head, char *program, int num)
 		return (idx);
 	}
 	_error(program, fcom, num);
-	free_arguments(&head);
 	free(fcom);
-	exit(EXIT_FAILURE);
+	return (-1);
 }
