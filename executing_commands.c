@@ -32,7 +32,7 @@ int executing_redirections_pipelines(argument_t *head, int num)
 	}
 	if (stat(fcom, &st) != 0)
 	{
-		_error(aux, fcom,num);
+		_error(aux, fcom, num);
 		free_arguments(&head);
 		free(fcom);
 		exit(EXIT_FAILURE);
