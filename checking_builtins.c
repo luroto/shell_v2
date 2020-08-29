@@ -7,7 +7,7 @@
  */
 int checking_builtins(char *buffer, history_t **head)
 {
-	char *me = "exit\n", *arg = NULL;
+	char *me = "exit\n", *arg = NULL, *check = NULL;
 	int code = 0;
 	int *position = NULL;
 
