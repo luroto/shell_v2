@@ -11,6 +11,7 @@
  */
 int to_command(char *com, char *comp, int op, char *f, char *program, int num)
 {
+	struct stat st;
 	char *path = NULL, *arr[2];
 	int i = 0, opf = 0, opera = 0, osi = 0;
 
@@ -22,6 +23,13 @@ int to_command(char *com, char *comp, int op, char *f, char *program, int num)
 		arr[i] = _strtok(comp, " \t\n", 1);
 	}
 	dup2(0, osi);
+	if (stat(f, &st) != 0)
+	{
+		_error(program, com, num);
+		free(path);
+		free_grid(arr, i);
+		return (-1);
+	}
 	if (op == 5)
 		opf = open(f, O_RDONLY);
 	else
