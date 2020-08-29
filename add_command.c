@@ -9,7 +9,7 @@
 argument_t *add_command(argument_t **head, char *comando, int num)
 {
 	argument_t *newnode, *aux;
-	int size;
+	int size, *spaces;
 
 	newnode = malloc(sizeof(argument_t));
 	if (newnode == NULL)
@@ -21,10 +21,13 @@ argument_t *add_command(argument_t **head, char *comando, int num)
 	newnode->tipo = checking_logop(comando);
 	newnode->next = NULL;
 	size = checking_newline(comando);
-        if (size != 0)
-                newnode->com = _strndup(comando, size);
-        else
-                newnode->com = _strdup(comando);
+	if (size != 0)
+	{
+		spaces = first_argument(comando);
+		newnode->com = _strndup(comando + spaces[0], spaces[1]);
+	}
+	else
+		newnode->com = _strdup(comando);
 	if  (newnode->com == NULL)
 	{
 		_error(comando, comando, num);
