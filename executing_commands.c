@@ -9,6 +9,7 @@
 */
 int executing_redirections_pipelines(argument_t *head, int num)
 {
+	struct stat st;
 	char *aux = NULL, *fcom = NULL;
 	int *ij;
 	int op = 0, idx = 0;
@@ -28,6 +29,13 @@ int executing_redirections_pipelines(argument_t *head, int num)
 			f = head->com;
 		idx++;
 		head = head->next;
+	}
+	if (stat(fcom, &st) != 0)
+	{
+		_error(aux, fcom,num);
+		free_arguments(&head);
+		free(fcom);
+		exit(EXIT_FAILURE);
 	}
 	if (op == 6 || op == 3)
 		idx = to_file(fcom, aux, op, f, num);
