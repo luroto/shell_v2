@@ -28,7 +28,12 @@ int to_command(char *com, char *comp, int op, char *f, char *program, int num)
 		opf = open(f, O_CREAT | O_APPEND | O_RDWR, 0664);
 	if (opf == -1)
 	{
-		_error(program, com, num);
+		if (errno == EACCES)
+			access_error(program, f, num);
+		else if (errno == EISDIR)
+			directory_error(program, f, num);
+		else
+			_error(program, com, num);
 		free(path);
 		free_grid(arr, i);
 		return (-1);
@@ -38,14 +43,12 @@ int to_command(char *com, char *comp, int op, char *f, char *program, int num)
 	close(opf);
 	dup2(osi, 0);
 	close(osi);
-	if (opera == 1)
-	{
-		_error(program, com, num);
-		free(path);
-		free_grid(arr, i);
-		return (-1);
-	}
 	free(path);
 	free_grid(arr, i);
+	if (opera == -1)
+	{
+		_error(program, com, num);
+		return (-1);
+	}
 	return (0);
 }
