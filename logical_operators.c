@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- *logical_operators - handles &&, || and ;
-1;5202;0c *@head: Arguments list
+ *logical_operators - handles && , || and ;
+*@head: Arguments list
  *@num: # of execution
- *Return - 0 if sucessful
+ *Return: 0 if sucessful
  */
 int logical_operators(argument_t *head, int num)
 {
@@ -24,16 +24,18 @@ int logical_operators(argument_t *head, int num)
 			{
 				value = WEXITSTATUS(status);
 				printf("This is the value %d ", value);
-				if (head->next!= NULL)
+				if (head->next != NULL)
 				{
 					if (head->next->tipo == 2 &&
-					    value > 0)
-						return (-1);
+						value > 0)
+					return (-1);
 				}
 				else
+				{
 					if (head->prev->tipo == 2 &&
-					    value > 0)
-						return (-1);
+						value > 0)
+					return (-1);
+				}
 			}
 			free(fcom);
 		}
