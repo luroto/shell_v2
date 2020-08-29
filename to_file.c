@@ -26,27 +26,29 @@ int to_file(char *com, char *comp, int op, char *f, char *program, int num)
 		opf = open(f, O_CREAT | O_TRUNC | O_RDWR, 0664);
 	else
 		opf = open(f, O_CREAT | O_APPEND | O_RDWR, 0664);
-	if (opf == -1)
-	{
+	if (errno != 0 && errno == EACCES)
+		access_error(program, f, num);
+	else if (errno != 0 && errno == EISDIR)
+		directory_error(program, f, num);
+	else if (errno != 0)
 		_error(program, com, num);
-		free(path);
-		free_grid(arr, i);
-		return (-1);
-	}
-	dup2(opf, 1);
-	opera = execve(path, arr, environ);
-	close(opf);
-	fflush(stdout);
-	dup2(ost, 1);
-	close(ost);
-	if (opera == 1)
+	if (opf != -1)
 	{
-		_error(program, com, num);
-		free(path);
-		free_grid(arr, i);
-		return (-1);
+		dup2(opf, 1);
+		opera = execve(path, arr, environ);
+		close(opf);
+		fflush(stdout);
+		dup2(ost, 1);
+		close(ost);
 	}
 	free(path);
 	free_grid(arr, i);
+	if (opf == -1)
+		return (-1);
+	if (opera == -1)
+	{
+		_error(program, com, num);
+		return (-1);
+	}
 	return (0);
 }

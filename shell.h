@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <fcntl.h>
+#include <errno.h>
 extern char **environ;
 /**
  *struct argument_s - Doubly linked list for storing commands
@@ -75,5 +76,6 @@ int *first_argument(char *buffer);
 int to_file(char *com, char *comp, int op, char *f, char *program, int num);
 int to_command(char *com, char *comp, int op, char *f, char *program, int num);
 int checking_newline(char *buffer);
-int non_interactive(int argc, char **argv);
+void access_error(char *program, char *file, int num);
+void directory_error(char *program, char *file, int num);
 #endif
