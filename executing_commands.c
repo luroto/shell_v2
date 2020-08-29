@@ -4,10 +4,11 @@
 *pipelines or
 *other operators
 *@head: Pointer to the first node
+*@program: Name of the executable
 *@num: # of execution
 *Return: 0 if processes were sucessful, otherwise > 0
 */
-int executing_redirections_pipelines(argument_t *head, int num)
+int executing_redirections_pipelines(argument_t *head, char *program, int num)
 {
 	char *aux = NULL, *fcom = NULL, *fpath = NULL, *err = "1";
 	int *ij;
@@ -33,13 +34,13 @@ int executing_redirections_pipelines(argument_t *head, int num)
 	if (fpath[0] != err[0])
 	{
 		if (op == 6 || op == 3)
-			idx = to_file(fpath, aux, op, f, num);
+			idx = to_file(fcom, aux, op, f, program, num);
 		if (op == 5)
-			idx = to_command(fpath, aux, op, f, num);
+			idx = to_command(fcom, aux, op, f, program, num);
 		free(fcom);
 		return (idx);
 	}
-	_error(aux, fcom, num);
+	_error(program, fcom, num);
 	free_arguments(&head);
 	free(fcom);
 	exit(EXIT_FAILURE);

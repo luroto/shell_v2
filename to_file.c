@@ -5,10 +5,11 @@
  *@comp: Full first command
  *@op: Operator for this command
  *@f: File for output redirection
+ *@program: Name of the executable
  *@num: # of process
  *Return: 0 if all OK, otherwise -1
  */
-int to_file(char *com, char *comp, int op, char *f, int num)
+int to_file(char *com, char *comp, int op, char *f, char *program, int num)
 {
 	char *path = NULL, *arr[2];
 	int i = 0, opf = 0, opera = 0, ost = 0;
@@ -33,7 +34,7 @@ int to_file(char *com, char *comp, int op, char *f, int num)
 	close(ost);
 	if (opera == 1)
 	{
-		_error(com, path, num);
+		_error(program, com, num);
 		free(path);
 		free_grid(arr, i);
 		return (-1);

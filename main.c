@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 			checking_builtins(buffer, &hh) == 0)
 		_strtok_execv(buffer, argv[0], num);
 		else
-			multiple_processes(buffer, num);
+			multiple_processes(buffer, argv[0], num);
 		if (term != 1 && checkget == -1)
 			break;
 	}
