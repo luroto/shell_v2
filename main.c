@@ -10,7 +10,7 @@ void ctrlhandler(__attribute__((unused))int numa)
 	write(1, "\n", 1);
 }
 /**
- *main - receive he info, verific Crt+C Crt+D and exit and exec other fu\
+ *main- receive he info, verific Crt+C Crt+D and exit and exec other fu\
 nc.
  *@argc: number of arguments
  *@argv: argments
@@ -23,14 +23,16 @@ int main(int argc, char **argv)
 	size_t bufsize = 1;
 	ssize_t checkget = 0;
 	history_t *hh = NULL;
-	int num = 0;
+	int num = 0, term = 0;
 
 	(void)argc;
 	signal(SIGINT, ctrlhandler);
+	term = isatty(STDIN_FILENO);
 	while (checkget != -1)
 	{
 		num++;
-		printf("$ ");
+		if (term == 1)
+			printf("$ ");
 		checkget = getline(&buffer, &bufsize, stdin);
 		if (checkget == -1)
 			break;
@@ -40,6 +42,8 @@ int main(int argc, char **argv)
 		_strtok_execv(buffer, argv[0], num);
 		else
 			multiple_processes(buffer, num);
+		if (term != 1 && checkget == -1)
+			break;
 	}
 	free(buffer);
 	free_history(&hh);

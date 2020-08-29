@@ -17,7 +17,7 @@ int *first_argument(char *buffer)
 			j = i;
 			flag = 1;
 		}
-		if (buffer[i] == ' ' && flag != 0)
+		if ((buffer[i] == ' ' || buffer[i] == '\n') && flag != 0)
 			break;
 	}
 	k = i - j;

@@ -75,5 +75,5 @@ int *first_argument(char *buffer);
 int to_file(char *com, char *comp, int op, char *f, int num);
 int to_command(char *com, char *comp, int op, char *f, int num);
 int checking_newline(char *buffer);
-
+int non_interactive(int argc, char **argv);
 #endif
