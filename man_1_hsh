@@ -58,7 +58,9 @@ Prints the list of commands.
 This simple_shell captures the Ctrl + C signal but it hasn't effect on simple_shell.
 .Sh Other types of data
 This simple_shell exits if EOF (Ctrl + D) is captured.
-.SH AUTHORS
+.Sh BUGS
+At this moment we're still working with the pipelines, the && and || logical operators and the ; command separator.
+.Sh AUTHORS
 Ximena Carolina Andrade Vargas
 Mariana Plazas
 Lucía Rodríguez Toloza
